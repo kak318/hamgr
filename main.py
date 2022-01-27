@@ -14,6 +14,7 @@ class words:
   komplement = ['jesteś piękny', 'ty też', 'piękny', 'piękna', 'superidol']
   unkomplement = ['nie nawidzę cię', 'u little frick', 'słaby', 'nie lubie cie']
   poke = ['jebać pikaczu', 'pikachuj', 'pikachu', 'poke', 'pokemon', 'pkmn', 'charmander', 'raticate', 'gotta catch em all', 'gotta smoke em all', 'tokemon (dont google it)', 'nuzlocke']
+  nice = ['nice', '69', '420']
 
 @client.event
 async def on_message(message):
@@ -34,5 +35,10 @@ async def on_message(message):
         await message.channel.send(random.choice(words.unkomplement))
     if message.content.split()[0] in words.poke:
         await message.channel.send(random.choice(words.poke))
+    if message.content.split()[0] in words.nice:
+        await message.channel.send(random.choice(words.nice))
 
-client.run(os.getenv("TOKEN"))
+    await client.change_presence(activity=discord.Game(name="Made by JAszko"))
+
+try: client.run(os.getenv("TOKEN"))
+except: os.system('kill 1')
